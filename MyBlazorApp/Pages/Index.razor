@@ -1,0 +1,30 @@
+﻿@page "/"
+@inject HttpClient client
+
+<PageTitle>Index</PageTitle>
+
+<h1>Temperature Converter</h1>
+
+<input type="number" @bind="celsius" placeholder="37" />
+<input type="button" value="Change to Kelvin" @onclick="FindInKelvin" />
+<input type="button" value="Change to Fahrenheit" @onclick="FindInFahrenheit" />
+
+<div>
+    Temperature in Kelvin is : @kelvin
+    Temperature in Fahrenheit is : @fahrenheit
+</div>
+
+@code{
+
+    private int celsius;
+
+    protected int kelvin;
+    protected float fahrenheit;
+    private void FindInKelvin(){
+        kelvin = celsius+273;
+    }
+
+    private void FindInFahrenheit(){
+        fahrenheit = ((celsius*9)/5)+32;
+    }
+}
